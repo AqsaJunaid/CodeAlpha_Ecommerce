@@ -1,0 +1,56 @@
+{% extends 'store/base.html' %}
+
+{% load static %}
+
+{% block content %}
+<div class="container">
+    <div class="card">
+        <h2>Register</h2>
+        <hr>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+
+            {% if messages %}
+            {{ message.tags }}
+
+            <div class = 'alert alert-primary' role = "alert">
+                {% for message in messages %}
+                {{ message }}
+                {% endfor %}
+
+            </div>
+
+{% endif %}
+
+
+
+            <div class="form-group">
+                <label for="exampleInputEmail1">First name</label>
+                <input type="text" required class="form-control" name = "first_name" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter First Name">
+              </div>
+              <div class="form-group">
+                <label for="exampleInputEmail1">Last name</label>
+                <input type="text" required class="form-control" name = "last_name" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Last Name">
+              </div>
+            
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Username</label>
+                  <input type="text" required class="form-control" name = "username" id="exampleInputEmail1" placeholder="Enter username">
+                  <small class="form-text text-muted">We'll never share your information with anyone else.</small>
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputPassword1">Password</label>
+                  <input type="password" required class="form-control" name = "password" id="exampleInputPassword1" placeholder="Password">
+                </div>
+                <p>Already have account <a href = "/login/">Login</a></p>
+
+                <button type="submit" class="btn btn-primary">Submit</button>
+            
+        </form>
+        
+    </div>
+
+</div>
+
+
+{% endblock content %}

@@ -1,0 +1,46 @@
+{% extends 'store/base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<div class="container">
+    <div class="card">
+        <h2>Login</h2>
+        
+        <hr>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+
+            {% if messages %}
+            {{ message.tags }}
+
+            <div class = 'alert alert-primary' role = "alert">
+                {% for message in messages %}
+                {{ message }}
+                {% endfor %}
+
+            </div>
+
+{% endif %}
+            
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Username</label>
+                  <input type="text" name = "username" required class="form-control" id="exampleInputEmail1" placeholder="Enter Username">
+                  <small class="form-text text-muted">We'll never share your information with anyone else.</small>
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputPassword1">Password</label>
+                  <input type="password" name = "password" required class="form-control" id="exampleInputPassword1" placeholder="Password">
+                </div>
+                
+                <p>Dont have account <a href = "/register/">Register</a></p>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            
+        </form>
+        
+    </div>
+
+</div>
+
+{% endblock content %}
